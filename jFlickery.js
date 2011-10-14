@@ -23,8 +23,20 @@ jFlickery.init = function(spec){
 jFlickery.photoSets = function(spec){
     var that = jFlickery.init(spec);
 
-    that.getList = function(){
-      return "My List";
+    that.getList = function(api_url){
+        var my_JSON_object = {},
+        http_request = new XMLHttpRequest(),
+        done = 4,
+        ok = 200;
+
+        http_request.open("GET", api_url, true);
+        http_request.onreadystatechange = function () {
+            if (http_request.readyState == done && http_request.status == ok) {
+                my_JSON_object = JSON.parse(http_request.responseText);
+                console.log(my_JSON_object);
+            }
+        };
+        http_request.send(null);
     };
 
     that.getPhotos = function(x){
