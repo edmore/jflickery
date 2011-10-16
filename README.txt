@@ -1,1 +1,1 @@
-jFlickery is a pure JS Flickr API
+jFlickery is a pure JS Flickr API wrapper.
