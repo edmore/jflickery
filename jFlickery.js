@@ -31,7 +31,7 @@ jFlickery.photoSets = function(spec){
 
         http_request.open("GET", api_url, true);
         http_request.onreadystatechange = function () {
-            if (http_request.readyState == done && http_request.status == ok) {
+            if (http_request.readyState === done && http_request.status === ok) {
                 my_JSON_object = JSON.parse(http_request.responseText);
                 console.log(my_JSON_object);
             }
