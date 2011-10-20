@@ -1,5 +1,7 @@
 /**
  *  jFlickery - Flickr API wrapper
+ *  Currently covers:
+ *    -PhotoSets
  *
  *  This Wrapper makes use of JSONP so if you do modify it ensure that the API endpoint that you use is from a trusted service.
  *
