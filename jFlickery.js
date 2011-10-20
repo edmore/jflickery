@@ -34,9 +34,9 @@ jFlickery.init = function(spec){
             user_id = that.getUserID(),
             api_key = that.getApiKey(),
             photoset_id = that.getPhotoSetID(),
-            base_url = "http://api.flickr.com/services/rest";
+            base_url = "http://api.flickr.com/services/rest/";
 
-        script.setAttribute('src', base_url +'/?method=flickr.'+ callback +'&api_key=' + api_key +'&user_id=' + user_id +'&photoset_id=' + photoset_id +'&format=json&jsoncallback=' + callback);
+        script.setAttribute('src', base_url +'?method=flickr.'+ callback +'&api_key=' + api_key +'&user_id=' + user_id +'&photoset_id=' + photoset_id +'&format=json&jsoncallback=' + callback);
         script.setAttribute('type','text/javascript');
         document.getElementsByTagName('head')[0].appendChild(script);
     };
