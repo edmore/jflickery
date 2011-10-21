@@ -49,7 +49,11 @@ var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
-    console.log(data);
+
+    var i;
+    for( i = 0; i < data["photosets"]["photoset"].length; i+=1 ){
+        console.log(data["photosets"]["photoset"][i]["title"]._content + " : " + data["photosets"]["photoset"][i]["id"]);
+    }
 };
 
 photosets.getPhotos = function (data) {
