@@ -10,26 +10,27 @@
 
 var jFlickery = {};
 
-jFlickery.init = function(spec){
+jFlickery.init = function (spec) {
+    "use strict";
     var that = {};
 
-    that.getUserID = function(){
+    that.getUserID = function () {
         return spec.myuserid || "";
     };
 
-    that.getPhotoSetID = function(){
+    that.getPhotoSetID = function () {
         return spec.mysetid || "";
     };
 
-    that.getApiKey = function(){
+    that.getApiKey = function () {
         return spec.mykey || "";
     };
 
-    that.getApiSecret = function(){
+    that.getApiSecret = function () {
         return spec.mysecret || "";
     };
 
-    that.jsonp = function(callback){
+    that.jsonp = function (callback) {
         var script = document.createElement('script'),
             user_id = that.getUserID(),
             api_key = that.getApiKey(),
@@ -46,11 +47,12 @@ jFlickery.init = function(spec){
 
 var photosets = {};
 
-photosets.getList = function(data){
+photosets.getList = function (data) {
+    "use strict";
     console.log(data);
 };
 
-photosets.getPhotos = function(data){
+photosets.getPhotos = function (data) {
+    "use strict";
     console.log(data);
 };
-
