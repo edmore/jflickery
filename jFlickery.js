@@ -49,10 +49,18 @@ var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
+    var i, a, li, content;
 
-    var i;
     for( i = 0; i < data["photosets"]["photoset"].length; i+=1 ){
-        console.log(data["photosets"]["photoset"][i]["title"]._content + " : " + data["photosets"]["photoset"][i]["id"]);
+        li = document.createElement('li');
+        a = document.createElement('a');
+
+        a.setAttribute('href', data["photosets"]["photoset"][i]["id"]);
+        content = data["photosets"]["photoset"][i]["title"]._content;
+        a.innerHTML = content;
+
+        document.getElementsByTagName('body')[0].appendChild(li);
+        document.getElementsByTagName('li')[i].appendChild(a);
     }
 };
 
