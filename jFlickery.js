@@ -66,7 +66,7 @@ photosets.getList = function (data) {
 
 photosets.getPhotos = function (data) {
     "use strict";
-    var i, img, div, content;
+    var i, img, li, content;
 
     for( i = 0; i < data["photoset"]["photo"].length; i+=1 ){
         var farm = data["photoset"]["photo"][i]["farm"],
@@ -74,14 +74,13 @@ photosets.getPhotos = function (data) {
             id = data["photoset"]["photo"][i]["id"],
             secret = data["photoset"]["photo"][i]["secret"];
 
-        div = document.createElement('div');
+        li = document.createElement('li');
         img = document.createElement('img');
 
-        // To do - get shorter URL
         img.setAttribute('src', 'http://farm'+ farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_z_d.jpg');
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
-        document.getElementsByTagName('body')[0].appendChild(div);
-        document.getElementsByTagName('div')[i].appendChild(img);
+        document.getElementsByTagName('body')[0].appendChild(li);
+        document.getElementsByTagName('li')[i].appendChild(img);
     }
 };
