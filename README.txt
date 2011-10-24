@@ -2,7 +2,6 @@ jFlickery is a pure JS Flickr API wrapper.
 ---------------------------------------------------------
 Usage :
 
-
 //To get the list of PhotoSets 
 var myFlickr = jFlickery.init({mykey : "your_api_key", myuserid : "your_user_id"});
 myFlickr.jsonp("photosets.getList");
