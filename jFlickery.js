@@ -55,7 +55,8 @@ photosets.getList = function (data) {
         li = document.createElement('li');
         a = document.createElement('a');
 
-        a.setAttribute('href', data["photosets"]["photoset"][i]["id"]);
+        a.setAttribute('id', data["photosets"]["photoset"][i]["id"]);
+        a.setAttribute('class', "setlinks");
         content = data["photosets"]["photoset"][i]["title"]._content;
         a.innerHTML = content;
 
