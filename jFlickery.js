@@ -49,10 +49,14 @@ var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
-    var i, a, li, content;
+    var i, a, li, content, div;
+
+    div = document.createElement('div');
+    div.setAttribute('class', "links");
 
     for( i = 0; i < data["photosets"]["photoset"].length; i+=1 ){
         li = document.createElement('li');
+        li.setAttribute('class', "link");
         a = document.createElement('a');
 
         a.setAttribute('id', data["photosets"]["photoset"][i]["id"]);
@@ -60,14 +64,18 @@ photosets.getList = function (data) {
         content = data["photosets"]["photoset"][i]["title"]._content;
         a.innerHTML = content;
 
-        document.getElementsByTagName('body')[0].appendChild(li);
-        document.getElementsByTagName('li')[i].appendChild(a);
+        document.getElementsByTagName('body')[0].appendChild(div);
+        document.getElementsByClassName('links')[0].appendChild(li);
+        document.getElementsByClassName('link')[i].appendChild(a);
     }
 };
 
 photosets.getPhotos = function (data) {
     "use strict";
-    var i, img, li, content;
+    var i, img, li, content, div;
+
+    div = document.createElement('div');
+    div.setAttribute('class', "photos");
 
     for( i = 0; i < data["photoset"]["photo"].length; i+=1 ){
         var farm = data["photoset"]["photo"][i]["farm"],
@@ -76,12 +84,14 @@ photosets.getPhotos = function (data) {
             secret = data["photoset"]["photo"][i]["secret"];
 
         li = document.createElement('li');
+        li.setAttribute('class', "photo");
         img = document.createElement('img');
 
         img.setAttribute('src', 'http://farm'+ farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_z_d.jpg');
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
-        document.getElementsByTagName('body')[0].appendChild(li);
-        document.getElementsByTagName('li')[i].appendChild(img);
+        document.getElementsByTagName('body')[0].appendChild(div);
+        document.getElementsByClassName('photos')[0].appendChild(li);
+        document.getElementsByClassName('photo')[i].appendChild(img);
     }
 };
