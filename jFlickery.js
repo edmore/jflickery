@@ -87,7 +87,7 @@ photosets.getPhotos = function (data) {
         li.setAttribute('class', "photo");
         img = document.createElement('img');
 
-        img.setAttribute('src', 'http://farm'+ farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_z_d.jpg');
+        img.setAttribute('src', 'http://farm'+ farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '.jpg');
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
         document.getElementsByTagName('body')[0].appendChild(div);
