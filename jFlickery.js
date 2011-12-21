@@ -8,7 +8,8 @@
  *  http://edmoremoyo.com
  */
 
-var jFlickery = {};
+var jFlickery = {},
+    photosets = {};
 
 jFlickery.init = function (spec) {
     "use strict";
@@ -44,8 +45,6 @@ jFlickery.init = function (spec) {
 
     return that;
 };
-
-var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
