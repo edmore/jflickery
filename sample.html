@@ -9,17 +9,19 @@
   }
 </style>
 <script src="jquery-1.6.4.min.js"></script>
+<script src='jFlickeryConfig.js' type="text/javascript"></script>
 <script src='jFlickery.js' type="text/javascript"></script>
 <script>
-  var myFlickr = jFlickery.init({mykey : "<place key here>", myuserid : "<place user id here>"});
-  myFlickr.jsonp("photosets.getList");
+  jFlickery.getJSON("photosets.getList");
 
   $("a.photoset" ).live("click", function(event){
     var setid = $(this).attr("id");
-    var myFlickr = jFlickery.init({mykey : "<place key here>", myuserid : "<place user id here>", mysetid : setid});
+
+    //Do some cleanup
     $("div.photos").detach();
-    myFlickr.jsonp("photosets.getPhotos");
-  });
+    //Reload photos
+    jFlickery.getJSON("photosets.getPhotos", setid);
+});
 </script>
 <head>
 <body>

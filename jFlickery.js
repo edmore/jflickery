@@ -8,10 +8,7 @@
  *  http://edmoremoyo.com
  */
 
-var jFlickery = {},
-    photosets = {};
-
-jFlickery.init = function (spec) {
+var jFlickery = (function(spec){
     "use strict";
     var that = {};
 
@@ -19,24 +16,17 @@ jFlickery.init = function (spec) {
         return spec.myuserid || "";
     };
 
-    that.getPhotoSetID = function () {
-        return spec.mysetid || "";
-    };
-
     that.getApiKey = function () {
         return spec.mykey || "";
     };
 
-    that.getApiSecret = function () {
-        return spec.mysecret || "";
-    };
-
-    that.jsonp = function (callback) {
+    that.getJSON = function () {
         var script = document.createElement('script'),
             user_id = that.getUserID(),
             api_key = that.getApiKey(),
-            photoset_id = that.getPhotoSetID(),
-            base_url = "http://api.flickr.com/services/rest/";
+            base_url = "http://api.flickr.com/services/rest/",
+            callback = Array.prototype.slice.call(arguments,0,1),
+            photoset_id = Array.prototype.slice.call(arguments,1,2);
 
         script.setAttribute('src', base_url +'?method=flickr.'+ callback +'&api_key=' + api_key +'&user_id=' + user_id +'&photoset_id=' + photoset_id +'&format=json&jsoncallback=' + callback);
         script.setAttribute('type','text/javascript');
@@ -44,7 +34,9 @@ jFlickery.init = function (spec) {
     };
 
     return that;
-};
+}(jFlickeryConfig));
+
+var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
@@ -94,3 +86,4 @@ photosets.getPhotos = function (data) {
         document.getElementsByClassName('photo')[i].appendChild(img);
     }
 };
+
