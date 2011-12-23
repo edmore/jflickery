@@ -7,7 +7,7 @@ PhotoSets
 
 Usage :
 
-Place your Flickr key and user id in the "jFlickeryConfig.js" file.
+Edit the "jFlickeryConfig.js" file to include your Flickr API key and User ID.
 
 //To get the list of PhotoSets
   jFlickery.getJSON("photosets.getList");
@@ -17,6 +17,5 @@ Place your Flickr key and user id in the "jFlickeryConfig.js" file.
 
 ----------------------------------------------------------
 
-Please edit the sample.html file to try it out.
-The sample file shows how easily you can use jFlickery with JQuery.
+The sample file shows how easily you can use jFlickery with jQuery.
 Download the latest version of JQuery and edit the file accordingly or if you prefer download the one specified in the sample.
