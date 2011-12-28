@@ -20,7 +20,7 @@ var jFlickery = (function(spec){
         return spec.mykey || "";
     };
 
-    that.getJSON = function () {
+    that.getJSONP = function () {
         var script = document.createElement('script'),
             user_id = that.getUserID(),
             api_key = that.getApiKey(),
