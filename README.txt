@@ -10,10 +10,10 @@ Usage :
 Edit the "jFlickeryConfig.js" file to include your Flickr API key and User ID.
 
 //To get the list of PhotoSets
-  jFlickery.getJSON("photosets.getList");
+  jFlickery.getJSONP("photosets.getList");
 
 //To get the photos in a particular PhotoSet
-  jFlickery.getJSON("photosets.getPhotos", "<photoset id>");
+  jFlickery.getJSONP("photosets.getPhotos", "<photoset id>");
 
 ----------------------------------------------------------
 
