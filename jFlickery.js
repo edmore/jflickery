@@ -40,10 +40,12 @@ var photosets = {};
 
 photosets.getList = function (data) {
     "use strict";
-    var i, a, li, content, div;
+    var i, a, li, content, div, ul;
 
     div = document.createElement('div');
-    div.setAttribute('class', "links");
+    div.setAttribute('class', "setlinks");
+    ul = document.createElement('ul');
+    ul.setAttribute('class', "links");
 
     for( i = 0; i < data["photosets"]["photoset"].length; i+=1 ){
         li = document.createElement('li');
@@ -56,6 +58,7 @@ photosets.getList = function (data) {
         a.innerHTML = content;
 
         document.getElementsByTagName('body')[0].appendChild(div);
+        document.getElementsByClassName('setlinks')[0].appendChild(ul);
         document.getElementsByClassName('links')[0].appendChild(li);
         document.getElementsByClassName('link')[i].appendChild(a);
     }
@@ -63,10 +66,12 @@ photosets.getList = function (data) {
 
 photosets.getPhotos = function (data) {
     "use strict";
-    var i, img, li, content, div;
+    var i, img, li, content, div, ul;
 
     div = document.createElement('div');
-    div.setAttribute('class', "photos");
+    div.setAttribute('class', "set");
+    ul = document.createElement('ul');
+    ul.setAttribute('class', "photos");
 
     for( i = 0; i < data["photoset"]["photo"].length; i+=1 ){
         var farm = data["photoset"]["photo"][i]["farm"],
@@ -82,6 +87,7 @@ photosets.getPhotos = function (data) {
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
         document.getElementsByTagName('body')[0].appendChild(div);
+        document.getElementsByClassName('set')[0].appendChild(ul);
         document.getElementsByClassName('photos')[0].appendChild(li);
         document.getElementsByClassName('photo')[i].appendChild(img);
     }
