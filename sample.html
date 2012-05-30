@@ -1,10 +1,10 @@
 <html>
 <head>
 <style>
-  div.links {
+  div.setlinks {
    float: left;
   }
-  div.photos {
+  div.setphotos {
    float: right;
   }
 </style>
@@ -16,12 +16,12 @@
 
   $("a.photoset" ).live("click", function(event){
     var setid = $(this).attr("id");
-
     //Do some cleanup
-    $("div.photos").detach();
+    $("div.setphotos").detach();
     //Reload photos
     jFlickery.getJSONP("photosets.getPhotos", setid);
 });
+
 </script>
 <head>
 <body>

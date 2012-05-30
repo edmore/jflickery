@@ -80,7 +80,7 @@ photosets.getPhotos = function (data) {
     var i, img, li, content, div, ul;
 
     div = document.createElement('div');
-    div.setAttribute('class', "set");
+    div.setAttribute('class', "setphotos");
     ul = document.createElement('ul');
     ul.setAttribute('class', "photos");
 
@@ -98,7 +98,7 @@ photosets.getPhotos = function (data) {
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
         document.getElementsByTagName('body')[0].appendChild(div);
-        document.getElementsByClassName('set')[0].appendChild(ul);
+        document.getElementsByClassName('setphotos')[0].appendChild(ul);
         document.getElementsByClassName('photos')[0].appendChild(li);
         document.getElementsByClassName('photo')[i].appendChild(img);
     }
