@@ -26,7 +26,18 @@ var jFlickery = (function(spec){
             api_key = that.getApiKey(),
             base_url = "http://api.flickr.com/services/rest/",
             callback = Array.prototype.slice.call(arguments,0,1),
-            photoset_id = Array.prototype.slice.call(arguments,1,2);
+            photoset_id = Array.prototype.slice.call(arguments,1,2),
+            scripts = document.getElementsByTagName('script'),
+            length = scripts.length;
+
+        for (var i=0; i < length; i+=1){
+            if (scripts[i].getAttribute("src") !== null){
+                if (scripts[i].getAttribute("src").indexOf( base_url +'?method=flickr.'+ callback ) >= 0 ){
+                    var child = scripts[i];
+                    document.getElementsByTagName('head')[0].removeChild( child );
+                }
+            }
+        }
 
         script.setAttribute('src', base_url +'?method=flickr.'+ callback +'&api_key=' + api_key +'&user_id=' + user_id +'&photoset_id=' + photoset_id +'&format=json&jsoncallback=' + callback);
         script.setAttribute('type','text/javascript');
