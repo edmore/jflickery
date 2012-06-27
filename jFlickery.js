@@ -7,8 +7,9 @@
  *
  *  http://edmoremoyo.com
  */
+var jFlickeryConfig = jFlickeryConfig || {};
 
-var jFlickery = (function(spec){
+var jFlickery = (function (spec) {
     "use strict";
     var that = {};
 
@@ -25,22 +26,24 @@ var jFlickery = (function(spec){
             user_id = that.getUserID(),
             api_key = that.getApiKey(),
             base_url = "http://api.flickr.com/services/rest/",
-            callback = Array.prototype.slice.call(arguments,0,1),
-            photoset_id = Array.prototype.slice.call(arguments,1,2),
+            callback = Array.prototype.slice.call(arguments, 0, 1),
+            photoset_id = Array.prototype.slice.call(arguments, 1, 2),
             scripts = document.getElementsByTagName('script'),
-            length = scripts.length;
+            length = scripts.length,
+            i,
+            child;
 
-        for (var i=0; i < length; i+=1){
-            if (scripts[i].getAttribute("src") !== null){
-                if (scripts[i].getAttribute("src").indexOf( base_url +'?method=flickr.'+ callback ) >= 0 ){
-                    var child = scripts[i];
-                    document.getElementsByTagName('head')[0].removeChild( child );
+        for (i = 0; i < length; i += 1) {
+            if (scripts[i].getAttribute("src") !== null) {
+                if (scripts[i].getAttribute("src").indexOf(base_url + '?method=flickr.' + callback) >= 0) {
+                    child = scripts[i];
+                    document.getElementsByTagName('head')[0].removeChild(child);
                 }
             }
         }
 
-        script.setAttribute('src', base_url +'?method=flickr.'+ callback +'&api_key=' + api_key +'&user_id=' + user_id +'&photoset_id=' + photoset_id +'&format=json&jsoncallback=' + callback);
-        script.setAttribute('type','text/javascript');
+        script.setAttribute('src', base_url + '?method=flickr.' + callback + '&api_key=' + api_key + '&user_id=' + user_id + '&photoset_id=' + photoset_id + '&format=json&jsoncallback=' + callback);
+        script.setAttribute('type', 'text/javascript');
         document.getElementsByTagName('head')[0].appendChild(script);
     };
 
@@ -58,7 +61,7 @@ photosets.getList = function (data) {
     ul = document.createElement('ul');
     ul.setAttribute('class', "links");
 
-    for( i = 0; i < data["photosets"]["photoset"].length; i+=1 ){
+    for (i = 0; i < data["photosets"]["photoset"].length; i += 1) {
         li = document.createElement('li');
         li.setAttribute('class', "link");
         a = document.createElement('a');
@@ -77,24 +80,24 @@ photosets.getList = function (data) {
 
 photosets.getPhotos = function (data) {
     "use strict";
-    var i, img, li, content, div, ul;
+    var i, img, li, content, div, ul, farm, server, id, secret;
 
     div = document.createElement('div');
     div.setAttribute('class', "setphotos");
     ul = document.createElement('ul');
     ul.setAttribute('class', "photos");
 
-    for( i = 0; i < data["photoset"]["photo"].length; i+=1 ){
-        var farm = data["photoset"]["photo"][i]["farm"],
-            server = data["photoset"]["photo"][i]["server"],
-            id = data["photoset"]["photo"][i]["id"],
-            secret = data["photoset"]["photo"][i]["secret"];
+    for (i = 0; i < data["photoset"]["photo"].length; i += 1) {
+        farm = data["photoset"]["photo"][i]["farm"];
+        server = data["photoset"]["photo"][i]["server"];
+        id = data["photoset"]["photo"][i]["id"];
+        secret = data["photoset"]["photo"][i]["secret"];
 
         li = document.createElement('li');
         li.setAttribute('class', "photo");
         img = document.createElement('img');
 
-        img.setAttribute('src', 'http://farm'+ farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '.jpg');
+        img.setAttribute('src', 'http://farm' + farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '.jpg');
         img.setAttribute('title', data["photoset"]["photo"][i]["title"]);
 
         document.getElementsByTagName('body')[0].appendChild(div);
