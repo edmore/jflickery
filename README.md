@@ -13,7 +13,7 @@ Usage :
   jFlickery.getJSONP("photosets.getList");
 
 - To get the photos in a particular PhotoSet
-  jFlickery.getJSONP("photosets.getPhotos", "<photoset id>");
+  jFlickery.getJSONP("photosets.getPhotos", "photoset_id");
 
 ----------------------------------------------------------
 
