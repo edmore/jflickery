@@ -11,11 +11,12 @@ Usage :
 
 - To get the list of PhotoSets
 
-  - jFlickery.getJSONP("photosets.getList");
+>jFlickery.getJSONP('photosets.getList');
+  
 
 - To get the photos in a particular PhotoSet
 
-  - jFlickery.getJSONP("photosets.getPhotos", "\<photoset_id\>");
+>jFlickery.getJSONP('photosets.getPhotos', "\<photoset_id\>");
 
 ----------------------------------------------------------
 
