@@ -16,7 +16,7 @@ Usage :
 
 - To get the photos in a particular PhotoSet
 
->jFlickery.getJSONP('photosets.getPhotos', "\<photoset_id\>");
+>jFlickery.getJSONP('photosets.getPhotos', '\<photoset_id\>');
 
 ----------------------------------------------------------
 
