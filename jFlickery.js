@@ -1,37 +1,55 @@
-/**
- *  jFlickery - Flickr API wrapper
- *  Currently covers:
- *    -PhotoSets - getList , getPhotos
- *
- *  This Wrapper makes use of JSONP so if you do modify it ensure that the API endpoint that you use is from a trusted service.
+/*
+ *  jflickery.js - Flickr Javascript API wrapper
  *
  *  http://edmoremoyo.com
  */
-var jFlickeryConfig = jFlickeryConfig || {};
 
-var jFlickery = (function (spec) {
+var JFLICKERY_CONFIG = JFLICKERY_CONFIG || {};
+
+/*
+*   @module JFLICKERY
+*/
+
+var JFLICKERY = (function (spec) {
     "use strict";
     var that = {};
+
+    /*
+     * @namespace JFLICKERY
+     * @object getUserID
+     * @return {String} user id
+     */
 
     that.getUserID = function () {
         return spec.myuserid || "";
     };
 
+    /*
+     * @namespace JFLICKERY
+     * @object getApiKey
+     * @return {String} api key
+     */
+
     that.getApiKey = function () {
         return spec.mykey || "";
     };
 
+    /*
+     * @namespace JFLICKERY
+     * @object getJSONP
+     */
+
     that.getJSONP = function () {
         var script = document.createElement('script'),
-            user_id = that.getUserID(),
-            api_key = that.getApiKey(),
-            base_url = "http://api.flickr.com/services/rest/",
-            callback = Array.prototype.slice.call(arguments, 0, 1),
-            photoset_id = Array.prototype.slice.call(arguments, 1, 2),
-            scripts = document.getElementsByTagName('script'),
-            length = scripts.length,
-            i,
-            child;
+        user_id = that.getUserID(),
+        api_key = that.getApiKey(),
+        base_url = "http://api.flickr.com/services/rest/",
+        callback = Array.prototype.slice.call(arguments, 0, 1),
+        photoset_id = Array.prototype.slice.call(arguments, 1, 2),
+        scripts = document.getElementsByTagName('script'),
+        length = scripts.length,
+        i,
+        child;
 
         for (i = 0; i < length; i += 1) {
             if (scripts[i].getAttribute("src") !== null) {
@@ -48,7 +66,7 @@ var jFlickery = (function (spec) {
     };
 
     return that;
-}(jFlickeryConfig));
+}(JFLICKERY_CONFIG));
 
 var photosets = {};
 
